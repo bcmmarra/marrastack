@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarraStack | Aviso</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        .warning-icon {
+            font-size: 4rem;
+            color: #ff4757;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-outline-stack {
+            border: 1px solid var(--cyber-green);
+            color: var(--cyber-green);
+            background: transparent;
+            padding: 12px 25px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-outline-stack:hover {
+            background: rgba(0, 255, 127, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-card">
+        <div class="warning-icon">!</div>
+        <div class="logo-text" style="font-size: 2rem; justify-content: center; margin-bottom: 1rem;">
+            <span class="marra">OPS!</span><span class="stack">DUPLICADO</span>
+            <div class="cursor"></div>
+        </div>
+        <p class="subtitle">
+            O e-mail <strong>{{ email }}</strong> já consta em nossa base de dados. Não se preocupe, você já está na
+            lista!
+        </p>
+        <a href="/" class="btn-outline-stack">VOLTAR AO INÍCIO</a>
+    </div>
+</body>
+
+</html>

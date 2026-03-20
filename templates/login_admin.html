@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>MarraStack | Login Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="landing-card">
+        <div class="logo-text" style="font-size: 2rem; margin-bottom: 20px;">
+            <span class="marra">ACESSO</span><span class="stack">RESTRITO</span>
+        </div>
+        
+        <form action="/admin/login" method="POST">
+            <div class="input-group-custom" style="margin-bottom: 15px;">
+                <input type="password" name="senha" placeholder="Digite a chave mestre" required autofocus>
+                <button class="btn-stack" type="submit">ENTRAR</button>
+            </div>
+            {% if erro %}
+                <p style="color: #ff4757; font-family: var(--font-mono); font-size: 0.8rem;">{{ erro }}</p>
+            {% endif %}
+        </form>
+        
+        <a href="/" style="color: var(--ash-gray); text-decoration: none; font-size: 0.8rem;">Voltar ao Início</a>
+    </div>
+</body>
+</html>

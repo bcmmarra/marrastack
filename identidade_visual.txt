@@ -1,0 +1,32 @@
+1. O Conceito
+O nome MarraStack sugere duas coisas: a solidez do sobrenome e o conceito de "stack" (empilhamento de camadas tecnológicas, software stack, dados).
+
+Palavras-chave: Modular, Estruturado, Ágil, Conectado, Dark Mode.
+
+2. A Paleta de Cores (Cultura Tech)
+
+Tipo             |   Cor (Hexadecimal) | Nome Sugerido    | Uso
+Fundo            |   #0B0E14         | Deep Space       | Fundo principal da aplicação e site.
+Superfície       |   #161B22         | Plesk Dark       | Fundo de cards, menus e tabelas.
+Destaque         |   #00FF7F         | Cyber Green      | Botões (CTAs), links ativos, bordas de foco.
+Destaque         |   #FFD700         | Amarelo Elétrico | Botões (CTAs), links ativos, bordas de foco.
+Destaque         |   #0047AB         | Azul Cobalto     | Botões (CTAs), links ativos, bordas de foco.
+Texto Principal  |   #FFFFFF         | Pure White       | Títulos e textos importantes.
+Texto Secundário |   #A0A0A0         | Ash Gray         | Descrições e textos menos relevantes.
+
+3. Tipografia (As Fontes)
+Fonte para Títulos (Headings):
+"Inter" ou "Poppins". São robustas, geométricas e muito usadas por startups tech.
+
+Fonte para Corpo de Texto (Body):
+"Roboto" ou "Inter". Excelentes para leitura longa.
+
+Fonte para Código/Tech (Monospace):
+"JetBrains Mono" ou "Fira Code". Para exibir snippets de código, status ou o próprio nome em estilo "terminal".
+
+4. O Logotipo (Estrutura Básica)
+Opção A: Tipográfico Tech (Estilo Terminal)
+[MARRA>STACK]
+(O símbolo > pode ser o Cyber Green)
+
+Opção B: O Ícone "Modular"

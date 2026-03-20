@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarraStack | Sucesso</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        .success-icon {
+            font-size: 4rem;
+            color: var(--cyber-green);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-card">
+        <div class="success-icon">✓</div>
+        <div class="logo-text" style="font-size: 2rem; justify-content: center; margin-bottom: 1rem;">
+            <span class="marra">SISTEMA</span><span class="stack">PRONTO</span>
+            <div class="cursor"></div>
+        </div>
+        <p class="subtitle">
+            O e-mail <strong>{{ email }}</strong> foi registrado na base de dados do <strong>MarraStack</strong>.
+        </p>
+        <a href="/" class="btn-stack" style="text-decoration: none; display: inline-block;">VOLTAR</a>
+    </div>
+</body>
+
+</html>

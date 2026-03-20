@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarraStack | Sua Caixa de Ferramentas Tech</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="landing-card">
+        <div class="logo-container">
+            <div class="stack-icon">
+                <div class="icon-bar icon-bar-1"></div>
+                <div class="icon-bar icon-bar-2"></div>
+                <div class="icon-bar icon-bar-3"></div>
+            </div>
+            <div class="logo-text">
+                <span class="marra">MARRA</span><span class="stack">STACK</span>
+                <div class="cursor"></div>
+            </div>
+        </div>
+
+        <div class="status-tag">
+            [ BUILDING_ENVIRONMENT: FLASK_PYTHON ]
+        </div>
+
+        <p class="subtitle">
+            Uma caixa de ferramentas multifuncional projetada para simplificar sua gestão financeira e operacional.
+        </p>
+
+        <form action="/subscribe" method="POST" class="col-lg-10 mx-auto">
+            <div class="input-group-custom">
+                <input type="email" name="user_email" placeholder="Digite seu e-mail para o acesso antecipado" required>
+                <button class="btn-stack" type="submit">NOTIFICAR-ME</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer-info">
+        MARRASTACK.DEV.BR // VER: 0.0.1 // <a href="/admin/login" style="color: #333; text-decoration: none;">ADMIN</a>
+    </div>
+
+</body>
+
+</html>

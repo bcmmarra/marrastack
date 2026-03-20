@@ -18,6 +18,7 @@ O **MarraStack** é um ecossistema de ferramentas desenvolvido para centralizar 
 
 O projeto segue uma estrutura organizada para facilitar a escalabilidade:
 
+```text
 /marrastack
 │
 ├── app.py                # Controller Principal e Configurações
@@ -29,9 +30,10 @@ O projeto segue uma estrutura organizada para facilitar a escalabilidade:
 │   ├── layouts/          # Estruturas base e Navbar
 │   └── admin/            # Painéis restritos
 └── requirements.txt      # Dependências do projeto
+```
 
-
-🛠️ Ferramentas Integradas
+---
+## 🛠️ Ferramentas Integradas
 Lead Capture: Landing Page otimizada para captura de e-mails com feedback de sucesso/duplicidade.
 
 Admin Panel: Painel restrito com autenticação por sessão para visualização de leads.

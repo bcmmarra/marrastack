@@ -42,7 +42,7 @@ My Finance (Em breve): Módulo de gestão financeira pessoal.
 
 Docs Gen (Em breve): Gerador automático de documentos .docx para licitações.
 
-🔧 Como Executar o Projeto
+## 🔧 Como Executar o Projeto
 1. Clone o repositório:
 git clone [https://github.com/SEU_USUARIO/marrastack.git](https://github.com/SEU_USUARIO/marrastack.git)
 

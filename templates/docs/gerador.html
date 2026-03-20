@@ -1,0 +1,50 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="logo-text" style="font-size: 1.8rem; margin-bottom: 10px;">
+        <span class="marra">DOCS</span><span class="stack">GENERATOR</span>
+    </div>
+    <p style="color: var(--ash-gray); margin-bottom: 30px;">
+        Transforme sua planilha <strong>.xlsx</strong> em documentos <strong>.docx</strong> em segundos.
+    </p>
+
+    <div class="upload-box">
+        <form action="/docs/processar" method="POST" enctype="multipart/form-data">
+            <label for="planilha" class="drop-zone">
+                <span class="icon">📁</span>
+                <span class="text">Arraste sua planilha ou clique aqui</span>
+                <input type="file" name="planilha" id="planilha" accept=".xlsx" hidden onchange="this.form.submit()">
+            </label>
+        </form>
+    </div>
+
+    <div class="instructions" style="margin-top: 40px; text-align: left; font-size: 0.85rem;">
+        <h4 style="color: var(--cyber-green);">Como usar:</h4>
+        <ul style="list-style: none; padding: 0; color: var(--ash-gray);">
+            <li>1. Certifique-se de que os modelos estão em <code>/static/modelos/</code></li>
+            <li>2. Use a coluna <code>NOME_DO_MODELO</code> no Excel para indicar o arquivo.</li>
+            <li>3. O sistema limpará os nomes e salvará em <code>/documentos_gerados/</code></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    .upload-box {
+        border: 2px dashed rgba(0, 255, 127, 0.3);
+        border-radius: 15px;
+        padding: 50px;
+        text-align: center;
+        transition: 0.3s;
+        background: rgba(255, 255, 255, 0.02);
+    }
+    .upload-box:hover {
+        border-color: var(--cyber-green);
+        background: rgba(0, 255, 127, 0.05);
+        cursor: pointer;
+    }
+    .drop-zone { display: block; cursor: pointer; }
+    .drop-zone .icon { font-size: 3rem; display: block; margin-bottom: 10px; }
+    .drop-zone .text { color: var(--pure-white); font-family: var(--font-mono); }
+</style>
+{% endblock %}

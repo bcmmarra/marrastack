@@ -53,9 +53,20 @@ body {
     border-radius: 4px;
 }
 
-.icon-bar-1 { width: 40px; opacity: 1; }
-.icon-bar-2 { width: 30px; opacity: 0.7; }
-.icon-bar-3 { width: 20px; opacity: 0.4; }
+.icon-bar-1 {
+    width: 40px;
+    opacity: 1;
+}
+
+.icon-bar-2 {
+    width: 30px;
+    opacity: 0.7;
+}
+
+.icon-bar-3 {
+    width: 20px;
+    opacity: 0.4;
+}
 
 .logo-text {
     display: flex;
@@ -66,7 +77,10 @@ body {
     letter-spacing: -2px;
 }
 
-.logo-text .marra { color: var(--pure-white); }
+.logo-text .marra {
+    color: var(--pure-white);
+}
+
 .logo-text .stack {
     color: var(--cyber-green);
     background: rgba(0, 255, 127, 0.1);
@@ -85,8 +99,15 @@ body {
 }
 
 @keyframes blink {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .status-tag {
@@ -136,7 +157,8 @@ body {
     color: var(--bg-color);
     border: none;
     padding: 12px 25px;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -157,4 +179,32 @@ strong {
     font-size: 0.75rem;
     color: #333;
     letter-spacing: 4px;
+}
+
+
+
+:root {
+    --bg-color: #0b0e14;
+    --surface-color: #161b22;
+    --cyber-green: #00ff7f;
+    --pure-white: #f0f6fc;
+    --ash-gray: #8b949e;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--pure-white);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-stack {
+    background: var(--cyber-green);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
 }

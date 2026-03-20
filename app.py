@@ -1,10 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+import os
+
+from flask import Flask, render_template, request, flash, redirect, url_for, session
 from models import LeadModel
+from models import DocumentService
+
 
 app = Flask(__name__)
-app.secret_key = 'chave_secreta_marra_stack' # Necessário para usar sessões
+app.secret_key = "marra_secret_key" # Para exibir mensagens de feedback
 
 lead_service = LeadModel()
+doc_service = DocumentService()
 
 @app.route('/')
 def index():
@@ -44,6 +49,68 @@ def admin_panel():
 def admin_logout():
     session.pop('admin_logado', None)
     return redirect(url_for('home'))
+
+@app.route('/docs/gerar', methods=['GET', 'POST'])
+def view_gerador_docs():
+    if request.method == 'POST':
+        file = request.files.get('planilha')
+        if file:
+            # Salva temporariamente
+            temp_path = os.path.join('uploads', file.filename)
+            file.save(temp_path)
+            
+            # Chama o Model para processar
+            arquivos_criados = doc_service.gerar_lote(temp_path)
+            
+            return render_template('docs_resultado.html', arquivos=arquivos_criados)
+            
+    return render_template('docs_home.html')
+
+@app.route('/docs/testar', methods=['POST'])
+def testar_gerador():
+    file = request.files.get('planilha')
+    if file:
+        # Salva o Excel na pasta uploads
+        caminho_temp = os.path.join('uploads', file.filename)
+        file.save(caminho_temp)
+        
+        # Executa a automação
+        resultado = doc_service.gerar_lote(caminho_temp)
+        
+        return f"✅ Sucesso! {len(resultado)} documentos gerados na pasta /documentos_gerados"
+    return "❌ Nenhum arquivo enviado.", 400  
+    
+    
+@app.route('/dashboard/docs')
+def docs_dashboard():
+    # Rota para exibir a interface de upload
+    return render_template('docs/gerador.html')
+
+@app.route('/docs/processar', methods=['POST'])
+def processar_docs():
+    if 'planilha' not in request.files:
+        flash("Nenhum arquivo enviado!", "erro")
+        return redirect(url_for('docs_dashboard'))
+    
+    file = request.files['planilha']
+    
+    if file.filename == '':
+        flash("Selecione um arquivo .xlsx", "erro")
+        return redirect(url_for('docs_dashboard'))
+
+    # Salva e Processa
+    temp_path = os.path.join('uploads', file.filename)
+    file.save(temp_path)
+    
+    resultado = doc_service.gerar_lote(temp_path)
+    
+    flash(f"Sucesso! {len(resultado)} documentos gerados.", "sucesso")
+    return render_template('docs/resultado.html', arquivos=resultado)
+ 
+    
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

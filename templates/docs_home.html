@@ -1,0 +1,12 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<div class="landing-card">
+    <h3>📂 Gerador de Documentos</h3>
+    <p>Suba sua planilha `.xlsx` para gerar os contratos automaticamente.</p>
+    
+    <form action="/docs/gerar" method="POST" enctype="multipart/form-data">
+        <input type="file" name="planilha" accept=".xlsx" required class="input-custom">
+        <button type="submit" class="btn-stack">GERAR EM LOTE</button>
+    </form>
+</div>
+{% endblock %}

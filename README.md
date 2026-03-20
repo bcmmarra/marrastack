@@ -62,5 +62,7 @@ Acesse: http://127.0.0.1:5000
 🛡️ Segurança
 O acesso ao painel administrativo é protegido via sessão. Para fins de desenvolvimento, utilize a chave mestra definida no controlador.
 
-Desenvolvido por Bruno Cassio Marra
-
+📩 Contato & Autor
+Desenvolvido por Bruno Cassio Marra.
+Formação: Full Stack Development - Infinity School
+Foco: Automações Python & Gestão de Licitações

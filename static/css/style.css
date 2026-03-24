@@ -8,9 +8,13 @@
 }
 
 /* RESET E BASE */
-* { box-sizing: border-box; }
-body, html {
-  margin: 0; padding: 0;
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
   font-family: "Inter", sans-serif;
   background: var(--bg-dark);
   color: var(--pure-white);
@@ -55,17 +59,25 @@ body, html {
 }
 
 /* NAVEGAÇÃO SIDEBAR */
-.sidebar-nav { flex-grow: 1; }
+.sidebar-nav {
+  flex-grow: 1;
+}
 .nav-section {
-  font-size: 0.65rem; color: var(--text-gray);
+  font-size: 0.65rem;
+  color: var(--text-gray);
   margin: 25px 0 10px 5px;
-  letter-spacing: 2px; font-weight: bold;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 .nav-item {
-  display: block; padding: 12px 15px;
-  color: #ccc; text-decoration: none;
-  border-radius: 8px; margin-bottom: 5px;
-  transition: 0.2s; font-size: 0.9rem;
+  display: block;
+  padding: 12px 15px;
+  color: #ccc;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  transition: 0.2s;
+  font-size: 0.9rem;
 }
 .nav-item:hover {
   background: rgba(0, 255, 127, 0.1);
@@ -74,45 +86,46 @@ body, html {
 
 /* Container para alinhar Item + Estrela */
 .nav-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
 }
 
 .nav-wrapper .nav-item {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 /* A Estrela */
 .fav-star {
-    cursor: pointer;
-    color: var(--text-gray);
-    font-size: 1.2rem;
-    transition: 0.3s;
-    user-select: none;
+  cursor: pointer;
+  color: var(--text-gray);
+  font-size: 1.2rem;
+  transition: 0.3s;
+  user-select: none;
 }
 
 .fav-star:hover {
-    color: var(--cyber-green);
-    transform: scale(1.2);
+  color: var(--cyber-green);
+  transform: scale(1.2);
 }
 
 .fav-star.active {
-    color: var(--cyber-green);
-    text-shadow: 0 0 10px var(--cyber-green);
+  color: var(--cyber-green);
+  text-shadow: 0 0 10px var(--cyber-green);
 }
 
 /* Ajuste do Grid para não quebrar */
-.dashboard-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); /* Trava em 3 colunas */
-    gap: 25px;
-    min-height: 200px;
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 @media (max-width: 900px) {
-    .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* CONTEÚDO PRINCIPAL */
@@ -125,13 +138,17 @@ body, html {
 .top-bar {
   padding: 15px 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex; justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
   background: rgba(10, 11, 13, 0.8);
 }
 .status-indicator {
-  font-family: "JetBrains Mono"; font-size: 0.65rem;
-  color: var(--cyber-green); border: 1px solid var(--cyber-green);
-  padding: 4px 10px; border-radius: 4px;
+  font-family: "JetBrains Mono";
+  font-size: 0.65rem;
+  color: var(--cyber-green);
+  border: 1px solid var(--cyber-green);
+  padding: 4px 10px;
+  border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 255, 127, 0.2);
 }
 .page-body {
@@ -149,24 +166,47 @@ body, html {
 }
 
 /* Ícone de Barras (Stack) */
-.stack-icon { display: flex; flex-direction: column; gap: 5px; }
-.icon-bar { height: 7px; background-color: var(--cyber-green); border-radius: 4px; }
-.icon-bar-1 { width: 38px; opacity: 1; }
-.icon-bar-2 { width: 28px; opacity: 0.7; }
-.icon-bar-3 { width: 18px; opacity: 0.4; }
+.stack-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.icon-bar {
+  height: 7px;
+  background-color: var(--cyber-green);
+  border-radius: 4px;
+}
+.icon-bar-1 {
+  width: 38px;
+  opacity: 1;
+}
+.icon-bar-2 {
+  width: 28px;
+  opacity: 0.7;
+}
+.icon-bar-3 {
+  width: 18px;
+  opacity: 0.4;
+}
 
 /* Texto de Terminal Grande */
 .logo-text-terminal {
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
   font-family: "JetBrains Mono", monospace;
-  font-size: 2.8rem; font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 700;
   letter-spacing: -2px;
 }
-.logo-text-terminal .marra { color: var(--pure-white); }
+.logo-text-terminal .marra {
+  color: var(--pure-white);
+}
 .logo-text-terminal .stack {
   color: var(--cyber-green);
   background: rgba(0, 255, 127, 0.08);
-  padding: 0 8px; border-radius: 6px; margin-left: 4px;
+  padding: 0 8px;
+  border-radius: 6px;
+  margin-left: 4px;
 }
 
 /* ANIMAÇÃO DO CURSOR PISCANTE */
@@ -178,12 +218,23 @@ body, html {
 }
 
 /* Diferenciação de tamanho do cursor */
-.logo-text-sidebar .cursor { width: 10px; height: 1.2em; }
-.logo-text-terminal .cursor { width: 14px; height: 1.1em; }
+.logo-text-sidebar .cursor {
+  width: 10px;
+  height: 1.2em;
+}
+.logo-text-terminal .cursor {
+  width: 14px;
+  height: 1.1em;
+}
 
 @keyframes blink {
-  from, to { opacity: 1; }
-  50% { opacity: 0; }
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* ============================================================
@@ -191,48 +242,304 @@ body, html {
    ============================================================ */
 
 .hero-section {
-    display: flex;
-    justify-content: flex-start;
-    padding-bottom: 50px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 40px;
 }
 
-.welcome-header { margin-bottom: 40px; }
-.welcome-header h1 { 
-    color: var(--cyber-green); 
-    font-size: 1.5rem; 
-    letter-spacing: 2px; 
-    margin-bottom: 10px; 
+.welcome-header {
+  margin-bottom: 40px;
 }
-.welcome-header p { color: #888; font-size: 0.9rem; }
+.welcome-header h1 {
+  color: var(--cyber-green);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.welcome-header p {
+  color: #888;
+  font-size: 0.9rem;
+}
 
 /* Grid de Cards */
-.dashboard-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 25px; 
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-.card-link { text-decoration: none; color: inherit; }
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
 
 .card-stack {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 255, 127, 0.1);
-    padding: 35px 25px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    text-align: center;
-    height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 127, 0.1);
+  padding: 35px 25px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+  height: 100%;
 }
 
 .card-stack:hover {
-    background: rgba(0, 255, 127, 0.05);
-    border-color: var(--cyber-green);
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 255, 127, 0.1);
+  background: rgba(0, 255, 127, 0.05);
+  border-color: var(--cyber-green);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.1);
 }
 
-.card-icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
-.card-title { font-weight: bold; color: var(--cyber-green); display: block; margin-bottom: 12px; font-size: 1.1rem; }
-.card-stack p { font-size: 0.85rem; color: #aaa; line-height: 1.4; }
+.card-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 15px;
+}
+.card-title {
+  font-weight: bold;
+  color: var(--cyber-green);
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.card-stack p {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+/* BOTÃO HAMBÚRGUER */
+.menu-toggle {
+  display: none; /* Escondido no desktop por padrão */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--cyber-green);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* RESPONSIVIDADE (CELULAR) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Aparece no celular */
+    margin-right: auto; /* Alinha à esquerda na top-bar */
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -260px; /* Esconde totalmente à esquerda */
+    height: 100vh;
+    z-index: 1000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Quando a sidebar estiver ativa no celular */
+  .sidebar.collapsed {
+    left: 0;
+  }
+
+  .main-content {
+    width: 100vw;
+  }
+
+  .page-body {
+    padding: 20px; /* Reduz padding no celular */
+  }
+
+  .logo-text-terminal {
+    font-size: 1.8rem; /* Logo menor no celular */
+  }
+}
+
+/* OPÇÃO: Sidebar Retrátil no Desktop (Estilo 'Compacto') */
+@media (min-width: 769px) {
+  .sidebar.collapsed {
+    width: 80px;
+  }
+
+  /* Esconde textos e mostra só ícones quando colapsado */
+  .sidebar.collapsed .marra,
+  .sidebar.collapsed .nav-section,
+  .sidebar.collapsed .sidebar-footer,
+  .sidebar.collapsed .fav-star {
+    display: none;
+  }
+
+  .sidebar.collapsed .logo-text-sidebar {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Força uma coluna só no celular */
+    }
+}
+
+/* Esconde o trigger no Desktop */
+.mobile-logo-trigger {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Estilo do texto MS ao lado do ícone no mobile */
+.mobile-brand-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    color: var(--pure-white);
+    font-size: 1.2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .mobile-logo-trigger {
+        display: flex; /* Aparece só no celular */
+    }
+
+    .top-bar {
+        justify-content: space-between; /* Logo na esquerda, Status na direita */
+        padding: 10px 20px;
+    }
+
+    /* Opcional: Efeito de pulsação no ícone para indicar que é clicável */
+    .mobile-logo-trigger:active .icon-bar {
+        background-color: var(--pure-white);
+    }
+
+    /* Ajuste de tamanho para o ícone no topo */
+    .stack-icon.small .icon-bar-1 { width: 25px; height: 4px; }
+    .stack-icon.small .icon-bar-2 { width: 18px; height: 4px; }
+    .stack-icon.small .icon-bar-3 { width: 12px; height: 4px; }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        background: transparent; /* Remove o fundo sólido para não "cortar" a tela */
+        border: none;
+        padding: 15px 25px;
+        position: absolute; /* Deixa o conteúdo respirar por baixo */
+        width: 100%;
+        z-index: 10;
+    }
+
+    /* Esconde o indicador de status em telas muito pequenas se necessário */
+    .status-indicator {
+        font-size: 0.5rem;
+        opacity: 0.7;
+    }
+
+    /* Aumenta o espaçamento do corpo da página para não começar embaixo do header */
+    .page-body {
+        padding-top: 80px; 
+    }
+
+    /* Ajuste da Logo Principal no Mobile para não ocupar a tela toda */
+    .logo-text-terminal {
+        font-size: 2rem;
+        justify-content: center; /* Centraliza a logo no mobile para melhor equilíbrio */
+    }
+    
+    .logo-hybrid {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-stack {
+        padding: 20px; /* Reduz o tamanho interno do card */
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 15px;
+    }
+
+    .card-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .card-stack p {
+        display: none; /* Esconde a descrição longa no mobile para limpar o visual */
+    }
+}
+
+/* Ajuste do container para não herdar cliques indesejados */
+.logo-hybrid-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Estilo para as barras (Botão de Menu) */
+.stack-icon.small {
+    cursor: pointer;
+    padding: 5px; /* Aumenta a área de toque para o dedo no celular */
+    transition: transform 0.2s ease;
+}
+
+.stack-icon.small:active {
+    transform: scale(0.9); /* Feedback visual de clique */
+}
+
+/* Estilo para o Texto (Link da Home) */
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-terminal.small:hover .marra {
+    color: var(--cyber-green); /* Brilho suave ao passar o mouse ou tocar */
+    transition: 0.3s;
+}
+
+/* Cursor no Header */
+.cursor.small {
+    width: 8px;
+    height: 1.1em;
+    background-color: var(--cyber-green);
+    margin-left: 4px;
+    animation: blink 1.2s step-end infinite;
+}
+
+/* Overlay (Fundo Escuro) */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Escurece o fundo */
+    backdrop-filter: blur(4px);    /* Efeito de desfoque moderno */
+    z-index: 999;                  /* Abaixo da sidebar, acima do conteúdo */
+    display: none;                 /* Escondido por padrão */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Quando o overlay está ativo */
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Garanta que a sidebar tenha um z-index maior que o overlay */
+.sidebar {
+    z-index: 1000;
+}

@@ -1,116 +1,119 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MarraStack | Admin</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+</head>
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body class="dark-theme">
+<body class="dark-theme">
     <div class="app-container">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <div class="logo-text-sidebar">
-            <span class="marra">M</span><span class="stack">S</span>
-            <div class="cursor"></div>
-          </div>
-        </div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-text-sidebar">
+                    <span class="marra">M</span><span class="stack">S</span>
+                    <div class="cursor"></div>
+                </div>
+            </div>
 
-        <nav class="sidebar-nav">
-          <a href="/" class="nav-item">🏠 Home</a>
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-item">🏠 Home</a>
 
-          <div class="nav-section">DOCUMENTOS</div>
-          <div class="nav-wrapper">
-            <a
-              href="/dashboard/docs"
-              class="nav-item"
-              data-title="Gerador Lote"
-              data-icon="📊"
-              data-desc="Automação via Excel para grandes volumes."
-              >📊 Gerador Lote</a
-            >
-            <span class="fav-star" onclick="toggleFavorite(this)">☆</span>
-          </div>
+                <div class="nav-section">DOCUMENTOS</div>
+                <div class="nav-wrapper">
+                    <a href="/dashboard/docs" class="nav-item" data-title="Gerador Lote" data-icon="📊" data-desc="Automação via Excel para grandes volumes.">📊 Gerador Lote</a>
+                    <span class="fav-star" onclick="toggleFavorite(this)">☆</span>
+                </div>
 
-          <div class="nav-wrapper">
-            <a
-              href="/docs/manual"
-              class="nav-item"
-              data-title="Preenchimento"
-              data-icon="✍️"
-              data-desc="Interface dinâmica para preenchimento manual."
-              >✍️ Preenchimento</a
-            >
-            <span class="fav-star" onclick="toggleFavorite(this)">☆</span>
-          </div>
+                <div class="nav-wrapper">
+                    <a href="/docs/manual" class="nav-item" data-title="Preenchimento" data-icon="✍️" data-desc="Interface dinâmica para preenchimento manual.">✍️ Preenchimento</a>
+                    <span class="fav-star" onclick="toggleFavorite(this)">☆</span>
+                </div>
 
-          <div class="nav-section">FINANÇAS</div>
-          <div class="nav-wrapper">
-            <a
-              href="/finance"
-              class="nav-item"
-              data-title="MyFinance"
-              data-icon="💰"
-              data-desc="Gestão financeira pessoal e empresarial."
-              >💰 MyFinance</a
-            >
-            <span class="fav-star" onclick="toggleFavorite(this)">☆</span>
-          </div>
-        </nav>
+                <div class="nav-section">FINANÇAS</div>
+                <div class="nav-wrapper">
+                    <a href="/finance" class="nav-item" data-title="MyFinance" data-icon="💰" data-desc="Gestão financeira pessoal e empresarial.">💰 MyFinance</a>
+                    <span class="fav-star" onclick="toggleFavorite(this)">☆</span>
+                </div>
+            </nav>
 
-        <div class="sidebar-footer">v0.0.1</div>
-      </aside>
+            <div class="sidebar-footer">v0.0.1</div>
+        </aside>
 
-      <main class="main-content">
-        <header class="top-bar">
-          <span class="status-indicator">SYSTEM_ONLINE</span>
-        </header>
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="logo-hybrid-header">
+                    <div class="stack-icon small" onclick="toggleSidebar()" title="Abrir Menu">
+                        <div class="icon-bar icon-bar-1"></div>
+                        <div class="icon-bar icon-bar-2"></div>
+                        <div class="icon-bar icon-bar-3"></div>
+                    </div>
+                    <a href="/" class="logo-link">
+                        <div class="logo-text-terminal small">
+                            <span class="marra">MARRA</span><span class="stack">STACK</span>
+                            <div class="cursor small"></div>
+                        </div>
+                    </a>
+                </div>
+            </header>
 
-        <section class="page-body">{% block content %}{% endblock %}</section>
-      </main>
+            <section class="page-body">
+                {% block content %}{% endblock %}
+            </section>
+        </main>
     </div>
-  </body>
 
-  <script>
-    function toggleFavorite(star) {
-      const navItem = star.parentElement.querySelector(".nav-item");
-      const favData = {
-        title: navItem.getAttribute("data-title"),
-        icon: navItem.getAttribute("data-icon"),
-        desc: navItem.getAttribute("data-desc"),
-        url: navItem.getAttribute("href"),
-      };
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-      let favorites = JSON.parse(localStorage.getItem("marra_favs")) || [];
-
-      if (star.classList.contains("active")) {
-        // Remover dos favoritos
-        star.classList.remove("active");
-        star.innerText = "☆";
-        favorites = favorites.filter((f) => f.title !== favData.title);
-      } else {
-        // Adicionar (Limite de 3)
-        if (favorites.length < 3) {
-          star.classList.add("active");
-          star.innerText = "★";
-          favorites.push(favData);
-        } else {
-          alert("Limite de 3 favoritos atingido!");
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (sidebar && overlay) {
+                sidebar.classList.toggle('collapsed');
+                overlay.classList.toggle('active');
+            }
         }
-      }
 
-      localStorage.setItem("marra_favs", JSON.stringify(favorites));
-      if (window.location.pathname === "/") renderFavorites(); // Atualiza a home se estiver nela
-    }
-  </script>
+        function syncStars() {
+            const favorites = JSON.parse(localStorage.getItem("marra_favs")) || [];
+            document.querySelectorAll(".fav-star").forEach((star) => {
+                const navItem = star.parentElement.querySelector(".nav-item");
+                const title = navItem.getAttribute("data-title");
+                const isFav = favorites.some((f) => f.title === title);
+                star.classList.toggle("active", isFav);
+                star.innerText = isFav ? "★" : "☆";
+            });
+        }
+
+        function toggleFavorite(star) {
+            const navItem = star.parentElement.querySelector(".nav-item");
+            const favData = {
+                title: navItem.getAttribute("data-title"),
+                icon: navItem.getAttribute("data-icon"),
+                desc: navItem.getAttribute("data-desc"),
+                url: navItem.getAttribute("href"),
+            };
+
+            let favorites = JSON.parse(localStorage.getItem("marra_favs")) || [];
+            const index = favorites.findIndex(f => f.title === favData.title);
+
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                if (favorites.length >= 3) return alert("Limite de 3 favoritos atingido!");
+                favorites.push(favData);
+            }
+
+            localStorage.setItem("marra_favs", JSON.stringify(favorites));
+            syncStars();
+            if (typeof renderFavorites === "function") renderFavorites();
+        }
+
+        document.addEventListener("DOMContentLoaded", syncStars);
+    </script>
+</body>
 </html>

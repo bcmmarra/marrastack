@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %} {% block content %}
+<div class="admin-container">
+  <div class="logo-text">
+    <span class="marra">AUTO</span><span class="stack">FORM</span>
+  </div>
+
+  <label>Escolha o Modelo:</label>
+  <select
+    id="select_modelo"
+    class="input-custom"
+    onchange="carregarCampos(this.value)"
+  >
+    <option value="">-- Selecione um modelo detectado --</option>
+    {% for modelo in modelos %}
+    <option value="{{ modelo }}">{{ modelo.replace('.docx', '') }}</option>
+    {% endfor %}
+  </select>
+
+  <form
+    action="/docs/processar_manual"
+    method="POST"
+    id="form_dinamico"
+    style="margin-top: 20px; display: none"
+  >
+    <input type="hidden" name="NOME_DO_MODELO" id="modelo_input" />
+
+    <div id="container_campos"></div>
+
+    <button
+      type="submit"
+      class="btn-stack"
+      style="width: 100%; margin-top: 20px"
+    >
+      GERAR DOCUMENTO
+    </button>
+  </form>
+</div>
+
+<script>
+  function carregarCampos(modelo) {
+    if (!modelo) return;
+
+    const container = document.getElementById("container_campos");
+    const form = document.getElementById("form_dinamico");
+    document.getElementById("modelo_input").value = modelo;
+
+    container.innerHTML = "<p>🔍 Lendo variáveis do Word...</p>";
+    form.style.display = "block";
+
+    fetch(`/docs/get_campos/${modelo}`)
+      .then((response) => response.json())
+      .then((data) => {
+        container.innerHTML = ""; // Limpa o carregando
+        data.campos.forEach((campo) => {
+          const div = document.createElement("div");
+          div.className = "form-group";
+
+          // Transforma "NOME_DO_CLIENTE" em "Nome Do Cliente"
+          const labelAmigavel = campo
+            .replace(/_/g, " ")
+            .toLowerCase()
+            .replace(/\b\w/g, (l) => l.toUpperCase());
+
+          div.innerHTML = `
+        <label style="font-size: 0.8rem; color: var(--cyber-green); font-weight: bold;">
+            ${labelAmigavel}:
+        </label>
+        <input type="text" name="${campo}" class="input-custom" placeholder="Preencha o campo ${labelAmigavel}" required>
+    `;
+          container.appendChild(div);
+        });
+      });
+  }
+</script>
+{% endblock %}

@@ -1,29 +1,74 @@
-{% extends "layouts/base.html" %}
-
-{% block content %}
+{% extends "layouts/base.html" %} {% block content %}
 <div class="admin-container">
-    <div class="logo-text" style="font-size: 1.8rem; margin-bottom: 10px;">
-        <span class="marra">GERAÇÃO</span><span class="stack">CONCLUÍDA</span>
-    </div>
-    
-    <div class="success-card" style="background: rgba(0, 255, 127, 0.1); border: 1px solid var(--cyber-green); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-        <h3 style="color: var(--cyber-green); margin-top: 0;">✅ { { arquivos|length } } Documentos Criados!</h3>
-        <p style="color: var(--ash-gray);">Os arquivos foram salvos na pasta <code>/documentos_gerados</code> do servidor.</p>
-    </div>
+  <div class="logo-text" style="font-size: 1.8rem; margin-bottom: 10px">
+    <span class="marra">GERAÇÃO</span><span class="stack">CONCLUÍDA</span>
+  </div>
 
-    <div class="file-list">
-        <h4 style="font-family: var(--font-mono); color: var(--pure-white);">Arquivos Gerados:</h4>
-        <ul style="list-style: none; padding: 0;">
-            {% for arquivo in arquivos %}
-            <li style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); font-family: var(--font-mono); font-size: 0.9rem;">
-                📄 {{ arquivo }}
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+  <div
+    class="success-card"
+    style="
+      background: rgba(0, 255, 127, 0.1);
+      border: 1px solid var(--cyber-green);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    "
+  >
+    <h3 style="color: var(--cyber-green); margin-top: 0">
+      ✅ {{ arquivos|length }} Documentos Criados!
+    </h3>
+    <p style="color: var(--ash-gray)">
+      Os arquivos foram salvos na pasta <code>/documentos_gerados</code> do
+      servidor.
+    </p>
+  </div>
 
-    <div style="margin-top: 30px;">
-        <a href="/dashboard/docs" class="btn-stack" style="text-decoration: none; display: inline-block;">GERAR NOVOS DOCS</a>
-    </div>
+  <div class="file-list">
+    <h4 style="font-family: var(--font-mono); color: var(--pure-white)">
+      Arquivos Gerados:
+    </h4>
+    <ul style="list-style: none; padding: 0">
+      {% for arquivo in arquivos %}
+      <li
+        style="
+          padding: 10px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          font-family: var(--font-mono);
+          font-size: 0.9rem;
+        "
+      >
+        📄 {{ arquivo }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div style="margin-top: 30px">
+    <a
+      href="/dashboard/docs"
+      class="btn-stack"
+      style="text-decoration: none; display: inline-block"
+      >GERAR NOVOS DOCS</a
+    >
+  </div>
 </div>
-{% endblock %}
+{% for arquivo in arquivos %}
+<li
+  style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  "
+>
+  <span>📄 {{ arquivo }}</span>
+  <a
+    href="{{ url_for('download_file', filename=arquivo) }}"
+    class="btn-stack"
+    style="padding: 5px 10px; font-size: 0.7rem; text-decoration: none"
+  >
+    DOWNLOAD
+  </a>
+</li>
+{% endfor %} {% endblock %}

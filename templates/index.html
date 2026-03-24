@@ -1,54 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "layouts/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarraStack | Sua Caixa de Ferramentas Tech</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-
-    <div class="landing-card">
-        <div class="logo-container">
-            <div class="stack-icon">
-                <div class="icon-bar icon-bar-1"></div>
-                <div class="icon-bar icon-bar-2"></div>
-                <div class="icon-bar icon-bar-3"></div>
-            </div>
-            <div class="logo-text">
-                <span class="marra">MARRA</span><span class="stack">STACK</span>
-                <div class="cursor"></div>
-            </div>
+{% block content %}
+<div class="hero-section">
+    <div class="logo-hybrid">
+        <div class="stack-icon">
+            <div class="icon-bar icon-bar-1"></div>
+            <div class="icon-bar icon-bar-2"></div>
+            <div class="icon-bar icon-bar-3"></div>
         </div>
-
-        <div class="status-tag">
-            [ BUILDING_ENVIRONMENT: FLASK_PYTHON ]
+        <div class="logo-text-terminal">
+            <span class="marra">MARRA</span><span class="stack">STACK</span>
+            <div class="cursor"></div>
         </div>
+    </div>
+</div>
 
-        <p class="subtitle">
-            Uma caixa de ferramentas multifuncional projetada para simplificar sua gestão financeira e operacional.
-        </p>
+<div class="welcome-header">
+    <h1 class="glitch-text">BEM-VINDO, BRUNO</h1>
+    <p>Selecione uma ferramenta no menu lateral ou nos cards abaixo para iniciar.</p>
+</div>
 
-        <form action="/subscribe" method="POST" class="col-lg-10 mx-auto">
-            <div class="input-group-custom">
-                <input type="email" name="user_email" placeholder="Digite seu e-mail para o acesso antecipado" required>
-                <button class="btn-stack" type="submit">NOTIFICAR-ME</button>
-            </div>
-        </form>
+<div class="welcome-header">
+    <p>Seus favoritos (Máx. 3)</p>
+</div>
+
+<div id="favorites-grid" class="dashboard-grid">
     </div>
 
-    <div class="footer-info">
-        MARRASTACK.DEV.BR // VER: 0.0.1 // <a href="/admin/login" style="color: #333; text-decoration: none;">ADMIN</a>
-    </div>
+<script>
+function renderFavorites() {
+    const grid = document.getElementById('favorites-grid');
+    const favorites = JSON.parse(localStorage.getItem('marra_favs')) || [];
+    
+    if (favorites.length === 0) {
+        grid.innerHTML = '<p style="color: #444;">Nenhum favorito selecionado no menu lateral.</p>';
+        return;
+    }
 
-</body>
+    grid.innerHTML = favorites.map(fav => `
+        <a href="${fav.url}" class="card-link">
+            <div class="card-stack">
+                <span class="card-icon">${fav.icon}</span>
+                <span class="card-title">${fav.title}</span>
+                <p>${fav.desc}</p>
+            </div>
+        </a>
+    `).join('');
+}
 
-</html>
+// Inicializa ao carregar a página
+document.addEventListener('DOMContentLoaded', renderFavorites);
+</script>
+
+{% endblock %}

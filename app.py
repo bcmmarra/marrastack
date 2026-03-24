@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request, flash, redirect, url_for, session
+from flask import Flask, render_template, request, flash, redirect, url_for, session, send_from_directory
 from models import LeadModel
 from models import DocumentService
 
@@ -103,11 +103,37 @@ def processar_docs():
     file.save(temp_path)
     
     resultado = doc_service.gerar_lote(temp_path)
+    print(f"DEBUG: Lista de arquivos gerados: {resultado}")
     
     flash(f"Sucesso! {len(resultado)} documentos gerados.", "sucesso")
     return render_template('docs/resultado.html', arquivos=resultado)
- 
+
+@app.route('/docs/processar_manual', methods=['POST'])
+def processar_manual():
+    # Pega todos os campos digitados e transforma em dicionário
+    dados_digitados = request.form.to_dict()
     
+    # Criamos uma lista com esse único dicionário para reaproveitar sua lógica de lote
+    # Mas vamos criar uma função específica no Model para um arquivo só
+    resultado = doc_service.gerar_unico(dados_digitados)
+    
+    return render_template('docs/resultado.html', arquivos=resultado)
+
+@app.route('/docs/get_campos/<nome_modelo>')
+def get_campos(nome_modelo):
+    campos = doc_service.extrair_campos(nome_modelo)
+    return {"campos": campos}
+
+@app.route('/docs/manual', strict_slashes=False)
+def docs_manual():
+    # Esta é a versão automatizada que busca os arquivos na pasta
+    lista_modelos = doc_service.listar_modelos()
+    return render_template('docs/formulario.html', modelos=lista_modelos)
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    # Rota para baixar o arquivo gerado
+    return send_from_directory('documentos_gerados', filename, as_attachment=True)   
 
 
 
